@@ -349,23 +349,24 @@ if(pro_name === "" || pro_price === ""){
     xhttp.send("ename="+ename+"&ephone="+ephone+"&ejob="+ejob+"&esal="+esal+"&post_id="+url);
   
   }
-    function delete_(del_id,url_del,url_show,title,title_del) {
+  function delete_(del_id,url_del,url_show,title,title_del,table_name,table_id) {
    
     
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
+         
          if(this.responseText === "done"){
                
   $(document).ready(function(){
   
-    $(".drop_value").html("<span style='color:red;'>   تم حذف "+title_del+" نجاح   </span>");
+    $(".drop_value").html("<span style='color:red;'>   تم حذف "+title+" بنجاح   </span>");
    $("#down_from_top").slideDown().delay(3000).fadeOut();
    
  
 
  });
-          give_pages(url_show,title);
+          give_pages(url_show,title_del);
       
           document.getElementById('titley').innerHTML ="عرض البيانات";
            
@@ -377,9 +378,10 @@ if(pro_name === "" || pro_price === ""){
 
       }
     };
- 
+    if(confirm("هل تريد حذف "+title)) {
     xhttp.open("POST",url_del,true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("del_id="+del_id);
+    xhttp.send("del_id="+del_id+"&table_name="+table_name+"&table_id="+table_id);
+  }
   
   }

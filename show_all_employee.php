@@ -46,7 +46,7 @@ $q=mysql_query(" select * from emp order by eid desc");
                         "; ?>  
                         <input style='background:#f57373;color:#3d3df2;'  
                          class='btn btn-primary btn-user btn-block'      
-                            value='حذف' onmousedown='delete_(<?php echo $row["eid"] ; ?>,"delete_emp.php","show_all_employee.php","الموظف","عرض الموظفين")'/>	
+                            value='حذف' onmousedown='delete_(<?php echo $row["eid"] ; ?>,"delete_emp.php","show_all_employee.php","الموظف","عرض الموظفين","emp","eid")'/>	
                             
                         </td> 
                         </tr>  
