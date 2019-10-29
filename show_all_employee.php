@@ -17,7 +17,7 @@ $q=mysql_query(" select * from emp order by eid desc");
                   <thead>
                   <tr>
                        
-                       <th>الرقم</th>
+                       <th>#</th>
             <th>الاسم</th>
             <th>الهاتف </th>
                <th>الوظيفة</th>
@@ -29,34 +29,31 @@ $q=mysql_query(" select * from emp order by eid desc");
                    <tbody>
                     <?php
                    
-                     
+                        $srno= 0;
                         while($row=mysql_fetch_array($q))
                         {//dname,dphone,pname,ptype,pqty,psel,pcost,pbuy,ppro,plos,lfees,ldate1,ldate2
+                            $srno++;
                             echo "
                         <tr>
-                        <td>".$row['eid']."</td>
+                        <td>".$srno."</td>
                         <td>".$row['ename']."</td>
                         <td>".$row['ephone']."</td>
                         <td>".$row['ejob']."</td>
                         <td>".$row['esal']."</td>
                         <td>".$row['ehdate']."</td>
                         <td >
-                        <a href='#'  onclick='return false;' 
-                        onmousedown='edit_employee(".$row['eid'].")'><input style='background:#70e670;color:#3d3df2;' class='btn btn-primary btn-user btn-block'   value='تعديل'></a>   
+                        <span onmousedown='edit_employee(".$row['eid'].")'
+                        class='btn btn-success' style='width:48%;'>تعديل </span>   
                         "; ?>  
-                        <input style='background:#f57373;color:#3d3df2;'  
-                         class='btn btn-primary btn-user btn-block'      
-                            value='حذف' onmousedown='delete_(<?php echo $row["eid"] ; ?>,"delete_emp.php","show_all_employee.php","الموظف","عرض الموظفين","emp","eid")'/>	
+                        <span   class='btn btn-danger' style='width:48%;'
+                             
+                            onmousedown='delete_(<?php echo $row["eid"] ; ?>,"delete.php","show_all_employee.php","الموظف","عرض الموظفين","emp","eid")'>حذف</span>	
                             
                         </td> 
                         </tr>  
-                        <?php  }    
-                         
-                   ?>
-                   
-                   
-                   
-                  </tbody>
+                        <?php   
+                         }  ?>
+               </tbody>
                 </table>
                 </div>
                 <?php 

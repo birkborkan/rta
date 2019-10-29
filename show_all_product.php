@@ -27,11 +27,11 @@ $q=mysql_query(" select * from store order by sno desc");
                   </thead>
                    <tbody>
                     <?php
-                   $srno=mysql_num_rows($q);
+                   $srno= 0;
                         
                         while($row=mysql_fetch_array($q))
                         {//dname,dphone,pname,ptype,pqty,psel,pcost,pbuy,ppro,plos,lfees,ldate1,ldate2
-                            
+                           $srno++; 
                             echo "
                         <tr>
                         <td>".$srno."</td>
@@ -41,22 +41,16 @@ $q=mysql_query(" select * from store order by sno desc");
                         <td>".$row['sprice']."</td>
                         <td>".$row['sdate']."</td>
                         <td >
-                        <a href='#'  onclick='return false;' 
-                        onmousedown='edit_employee(".$row['eid'].")'><input style='background:#70e670;color:#3d3df2;' class='btn btn-primary btn-user btn-block'   value='تعديل'></a>   
-                          
-                        <input style='background:#f57373;color:#3d3df2;'  
-                         class='btn btn-primary btn-user btn-block'      onclick='return false;' 
-                         onmousedown='delete_emp(".$row['eid'].")'   value='حذف'>	
+                        <span  class='btn btn-success' style='width:48%;' onmousedown='edit_product(".$row['sno'].")'>تعديل</span>  
+                       "; ?>	
+                       <span class='btn btn-danger' style='width:48%;'  onmousedown='delete_(<?php echo $row["sno"] ; ?>,"delete.php","show_all_product.php","المنتج","عرض المنتجات","store","sno")'>	
+                           حذف
+                        </span>
                         </td> 
-                        </tr>
-                        ";  $srno-=1;  
-                        }    
-                         
-                   ?>
-                   
-                   
-                   
-                  </tbody>
+                        </tr>  
+                        <?php  
+                         }  ?>
+               </tbody>
                 </table>
                 </div>
                 <?php 

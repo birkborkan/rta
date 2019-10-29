@@ -10,11 +10,11 @@ or ejob like '%$name%' or esal like '%$name%' or ephone like '%$name%'") or die(
 
     ?>
     
-                <table class="table table-bordered" id="dataTable" width="100%" style='font-size:11px;text-align:right;' cellspacing="0">
+    <table class="table table-bordered" id="dataTable" width="100%" style='font-size:11px;text-align:right;' cellspacing="0">
                   <thead>
                   <tr>
                        
-                       <th>الرقم</th>
+                       <th>#</th>
             <th>الاسم</th>
             <th>الهاتف </th>
                <th>الوظيفة</th>
@@ -26,32 +26,30 @@ or ejob like '%$name%' or esal like '%$name%' or ephone like '%$name%'") or die(
                    <tbody>
                     <?php
                    
-                        
+                        $srno=mysql_num_rows($q);
                         while($row=mysql_fetch_array($q))
                         {//dname,dphone,pname,ptype,pqty,psel,pcost,pbuy,ppro,plos,lfees,ldate1,ldate2
                             echo "
                         <tr>
-                        <td>".$row['eid']."</td>
+                        <td>".$srno."</td>
                         <td>".$row['ename']."</td>
                         <td>".$row['ephone']."</td>
                         <td>".$row['ejob']."</td>
                         <td>".$row['esal']."</td>
                         <td>".$row['ehdate']."</td>
                         <td >
-                        <a href='# ' onclick='return false;' onmousedown='edit_employee(".$row['eid'].")'><input style='background:#70e670;
-                        border:1px solid white ;color:#3d3df2;' class='btn btn-primary btn-user btn-block'   value='تعديل'></a>   
-                          
-                        <input style='background:#f57373; border:1px solid white ;color:#3d3df2;'   class='btn btn-primary btn-user btn-block'   onclick='del_data(".$row['eid'].")' alt='حذف الفاتورة' name='delete' value='حذف'>	
+                        <a href='#'  onclick='return false;' 
+                        onmousedown='edit_employee(".$row['eid'].")'><input style='background:#70e670;color:#3d3df2;' class='btn btn-primary btn-user btn-block'   value='تعديل'></a>   
+                        "; ?>  
+                        <input style='background:#f57373;color:#3d3df2;'  
+                         class='btn btn-primary btn-user btn-block'      
+                            value='حذف' onmousedown='delete_(<?php echo $row["eid"] ; ?>,"delete.php","show_all_employee.php","الموظف","عرض الموظفين","emp","eid")'/>	
+                            
                         </td> 
-                        </tr>
-                        ";   
-                        }    
-                         
-                   ?>
-                   
-                   
-                   
-                  </tbody>
+                        </tr>  
+                        <?php  $srno-=1;
+                         }  ?>
+               </tbody>
                 </table>
                 </div>
                 <?php 
@@ -66,11 +64,11 @@ or ejob like '%$name%' or esal like '%$name%' or ephone like '%$name%'") or die(
 
     ?>
     
-                <table class="table table-bordered" id="dataTable" width="100%" style='font-size:11px;text-align:right;' cellspacing="0">
+    <table class="table table-bordered" id="dataTable" width="100%" style='font-size:11px;text-align:right;' cellspacing="0">
                   <thead>
                   <tr>
                        
-                       <th>الرقم</th>
+                       <th>#</th>
             <th>الاسم</th>
             <th>الهاتف </th>
                <th>الوظيفة</th>
@@ -82,31 +80,30 @@ or ejob like '%$name%' or esal like '%$name%' or ephone like '%$name%'") or die(
                    <tbody>
                     <?php
                    
-                        
+                        $srno=mysql_num_rows($q);
                         while($row=mysql_fetch_array($q))
                         {//dname,dphone,pname,ptype,pqty,psel,pcost,pbuy,ppro,plos,lfees,ldate1,ldate2
                             echo "
                         <tr>
-                        <td>".$row['eid']."</td>
+                        <td>".$srno."</td>
                         <td>".$row['ename']."</td>
                         <td>".$row['ephone']."</td>
                         <td>".$row['ejob']."</td>
                         <td>".$row['esal']."</td>
                         <td>".$row['ehdate']."</td>
                         <td >
-                        <a href='#'  onclick='return false;' onmousedown='edit_employee(".$row['eid'].")'><input style='background:#70e670;color:#3d3df2;' class='btn btn-primary btn-user btn-block'   value='تعديل'></a>   
-                          
-                        <input style='background:#f57373;color:#3d3df2;'   class='btn btn-primary btn-user btn-block'   onclick='del_data(".$row['eid'].")' alt='حذف الفاتورة' name='delete' value='حذف'>	
+                        <a href='#'  onclick='return false;' 
+                        onmousedown='edit_employee(".$row['eid'].")'><input style='background:#70e670;color:#3d3df2;' class='btn btn-primary btn-user btn-block'   value='تعديل'></a>   
+                        "; ?>  
+                        <input style='background:#f57373;color:#3d3df2;'  
+                         class='btn btn-primary btn-user btn-block'      
+                            value='حذف' onmousedown='delete_(<?php echo $row["eid"] ; ?>,"delete.php","show_all_employee.php","الموظف","عرض الموظفين","emp","eid")'/>	
+                            
                         </td> 
-                        </tr>
-                        ";   
-                        }    
-                         
-                   ?>
-                   
-                   
-                   
-                  </tbody>
+                        </tr>  
+                        <?php  $srno-=1;
+                         }  ?>
+               </tbody>
                 </table>
                 </div>
                 <?php 

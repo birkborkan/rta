@@ -110,6 +110,22 @@ if(!isset($_SESSION['global_admin'])){
  
   
   }
+   .down_from_top2{
+ 
+    color: white;
+    position: fixed;
+    right: 420px;
+    width: 250px;
+     
+    top: 0px;
+    text-align: right;
+    padding: 5px;
+    border-radius: 6px;
+    z-index:1001;
+
+ 
+  
+  }
   .dropdown-toggle::after {
     display: none;
     margin-left: .255em;
@@ -142,6 +158,15 @@ if(!isset($_SESSION['global_admin'])){
     margin-top:7px;
     
 } 
+table tr td{
+  font-size:8px;
+}
+.table , tr , td{
+  font-size:8px;
+}
+tbody , tr , td{
+  font-size:8px;
+}
 .clock{
   text-align:right;
 }
@@ -170,6 +195,9 @@ canvas{
 
    
 }
+form{
+  font-size:13px;
+}
 </style>
 
 </head>
@@ -178,6 +206,11 @@ canvas{
 <div class="down_from_top" id="down_from_top" style='display:none;'>
   <div><a href='#' class='hide_show' style='color:red;'onclick='return false;' >x</a></div>
   <div class='drop_value'> </div>
+  
+  </div>
+  <div class="down_from_top2" id="down_from_top2" style='display:none;'>
+  <div><a href='#' class='' style='color:red;'onclick='return false;' ></a></div>
+  <div class='drop_value2'> </div>
   
   </div>
   <!-- Page Wrapper -->
@@ -205,7 +238,7 @@ canvas{
  
    <li onclick='return false;' onmousedown="give_pages('store_insert.php','اضافة منتج')"><a href="#" >اضافة منتج</a></li>
                              
-   <li class='li_hover' role="presentation"  onclick='return false;' onmousedown="give_pages('show_all_product.php',' إضافة كلية جديدة');"><a role="menuitem" tabindex="-1"
+   <li class='li_hover' role="presentation"  onclick='return false;' onmousedown="give_pages('show_all_product.php','عرض المنتجات ');"><a role="menuitem" tabindex="-1"
        href="#">  عرض المنتجات </a></li>
   
  
@@ -218,7 +251,7 @@ canvas{
     <span class="caret"></span></div>
     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style='text-align:right;'>
     <li  onclick='return false;' onmousedown="give_pages('exports_insert.php','اضافة صادر')"><a href="#">  إضافة جديد</a></li>
-      <li class='li_hover' role="presentation" onclick='return false;' onmousedown="give_pages('show_all_depart.php',' تعديل بيانات الاقسام ');"><a role="menuitem" tabindex="-1" href="#">   المشتريات</a></li>
+      <li class='li_hover' role="presentation" onclick='return false;' onmousedown="give_pages('show_all_export.php','  عرض الصادر       ');"><a role="menuitem" tabindex="-1" href="#">   المشتريات</a></li>
  
     </ul>
   </div>
@@ -252,8 +285,8 @@ canvas{
     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style='text-align:right;'>
       <li role="presentation" onclick='return false;' onmousedown='give_pages("add_new_employee.php","إضافة موظف جديد")'><a role="menuitem" tabindex="-1" href="#">اضافة موظف</a></li>
       <li role="presentation" onclick='return false;' onmousedown='give_pages("show_all_employee.php"," عرض الموظفين    ")'><a role="menuitem" tabindex="-1" href="#">عرض الموظفين</a></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">اضافة راتب</a></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">   عرض الرواتب</a></li>
+      <li role="presentation"onclick='return false;' onmousedown='give_pages("add_sal.php","  إضافة مرتبات      ")'><a role="menuitem" tabindex="-1" href="#">اضافة راتب</a></li>
+      <li role="presentation" onclick='return false;' onmousedown='give_pages("show_all_sal.php","عرض المرتبات")'><a role="menuitem" tabindex="-1" href="#">   عرض الرواتب</a></li>
      
     </ul>
   </div>
@@ -469,7 +502,7 @@ Rotana Flour Mills
           <div class="row">
 
             <!-- Area Chart -->
-            <div class="col-xl-8 col-lg-7">
+            <div class="col-xl-8 col-lg-9" id='col_large'>
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -509,7 +542,7 @@ google_ad_height = 90;
             </div>
 
             <!-- Pie Chart -->
-            <div class="col-xl-4 col-lg-5">
+            <div class="col-xl-4 col-lg-3"  id='col_small'>
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">

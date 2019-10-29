@@ -4,8 +4,15 @@ $(document).ready(function(){
  $('.hide_show').click(function(){
   $("#down_from_top").slideUp();
   $(".drop_value").html(" ");
+
+ 
+ 
  
  });
+ 
+ 
+ 
+ 
  /*
  $(".btn1").click(function(){
   ;
@@ -62,15 +69,41 @@ function login() {
 
 // this is give for giving the pages to the div
   function give_pages(url,titlee) {
+   if(url === "show_all_export.php"){
+
+    $(document).ready(function(){
+        
+      $(".col-lg-3").hide();
+      $("#col_large").addClass("col-lg-12");
+      $("#col_large").addClass("col-xl-12");
    
+      
+    
+   });
+   }
+   else{
+    $(".col-lg-3").show();
+    $("#col_large").removeClass("col-lg-12");
+    $("#col_large").removeClass("col-xl-12");
+   }
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         document.getElementById('titley').innerHTML = titlee;
         document.getElementById('contenty').innerHTML = this.responseText;
+        $(document).ready(function(){
+        
+          $(".drop_value2").html(" ");
+         $("#down_from_top2").fadeIn();
+        
+       });
       }else{
-        document.getElementById('titley').innerHTML = "<img src='img/ajax-loader.gif'/> &nbsp; جاري جلب البيانات ........";
-
+        $(document).ready(function(){
+        
+          $(".drop_value2").html("<span style='color:red;'>  <img src='img/ajax-loader.gif'/> </span>");
+         $("#down_from_top2").fadeOut();
+        
+       });
       }
     };
  
@@ -109,7 +142,12 @@ function login() {
               $(".drop_value").html("<span style='color:red;'> المنتج "+pro_name+" موجود مسبقآ</span>");
              $("#down_from_top").slideDown().delay(3000).fadeOut();
              
-           
+          
+        
+              $(".drop_value2").html(" ");
+             $("#down_from_top2").fadeIn();
+            
+      
           
            });
            }
@@ -117,8 +155,12 @@ function login() {
        
     }
     else {
-     document.getElementById('titley').innerHTML = "<img src='img/ajax-loader.gif'/> &nbsp; جاري جلب البيانات ........";
-
+      $(document).ready(function(){
+        
+        $(".drop_value2").html("<span style='color:red;'>  <img src='img/ajax-loader.gif'/> </span>");
+       $("#down_from_top2").fadeOut();
+      
+     });
     }
   }
 if(pro_name === "" || pro_price === ""){
@@ -160,10 +202,16 @@ if(pro_name === "" || pro_price === ""){
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
        if(this.responseText === "done"){
+
         document.getElementById('titley').innerHTML ="إضافة صادر  جديد";
     
         $(document).ready(function(){
         
+        
+            $(".drop_value2").html("");
+           $("#down_from_top2").fadeIn();
+          
+    
           $(".drop_value").html("<span style='color:red;'>  تم اضافة منتج  "+pname+" بنجاح  </span>");
          $("#down_from_top").slideDown().delay(3000).fadeOut();
  
@@ -181,8 +229,12 @@ if(pro_name === "" || pro_price === ""){
     }
   }
     else {
-     document.getElementById('titley').innerHTML = "<img src='img/ajax-loader.gif'/> &nbsp; جاري جلب البيانات ........";
-
+      $(document).ready(function(){
+        
+        $(".drop_value2").html("<span style='color:red;'>  <img src='img/ajax-loader.gif'/> </span>");
+       $("#down_from_top2").fadeOut();
+      
+     });
     }
   }
   
@@ -228,7 +280,8 @@ if(pro_name === "" || pro_price === ""){
             $(".drop_value").html("<span style='color:green;'>   تم توظيف "+ename+"  في وظيفة "+ejob+" بنجاح</span>");
            $("#down_from_top").slideDown().delay(3000).fadeOut();
            
-         
+           $(".drop_value2").html("");
+           $("#down_from_top2").fadeIn();
         
          });
         }else if(this.responseText === "found"){
@@ -246,8 +299,12 @@ if(pro_name === "" || pro_price === ""){
     }
   
     else {
-     document.getElementById('titley').innerHTML = "<img src='img/ajax-loader.gif'/> &nbsp; جاري جلب البيانات ........";
-
+      $(document).ready(function(){
+        
+        $(".drop_value2").html("<span style='color:red;'>  <img src='img/ajax-loader.gif'/> </span>");
+       $("#down_from_top2").fadeOut();
+      
+     });
     }
   }
   
@@ -282,9 +339,19 @@ if(pro_name === "" || pro_price === ""){
       if (this.readyState == 4 && this.status == 200) {
         document.getElementById('titley').innerHTML = title;
         document.getElementById('search_content').innerHTML = this.responseText;
+        $(document).ready(function(){
+        
+          $(".drop_value2").html("");
+         $("#down_from_top2").fadeIn();
+        
+       });
       }else{
-        document.getElementById('titley').innerHTML = "<img src='img/ajax-loader.gif'/> &nbsp; جاري جلب البيانات ........";
-
+        $(document).ready(function(){
+        
+          $(".drop_value2").html("<span style='color:red;'>  <img src='img/ajax-loader.gif'/> </span>");
+         $("#down_from_top2").fadeOut();
+        
+       });
       }
     };
  //"search_text="+search_text)
@@ -302,9 +369,19 @@ if(pro_name === "" || pro_price === ""){
       if (this.readyState == 4 && this.status == 200) {
         document.getElementById('edit_content').innerHTML =  this.responseText;
         document.getElementById('titley').innerHTML ="عرض البيانات";
+        $(document).ready(function(){
+        
+          $(".drop_value2").html(" ");
+         $("#down_from_top2").fadeIn();
+        
+       });
       }else{
-        document.getElementById('titley').innerHTML = "<img src='img/ajax-loader.gif'/> &nbsp; جاري جلب البيانات ........";
-
+        $(document).ready(function(){
+        
+          $(".drop_value2").html("<span style='color:red;'>  <img src='img/ajax-loader.gif'/> </span>");
+         $("#down_from_top2").fadeOut();
+        
+       });
       }
     };
  
@@ -333,14 +410,19 @@ if(pro_name === "" || pro_price === ""){
     $(".drop_value").html("<span style='color:green;'>        تم تعديل بيانات بنجاح     </span>");
    $("#down_from_top").slideDown().delay(3000).fadeOut();
    
- 
+   $(".drop_value2").html("");
+   $("#down_from_top2").fadeIn();
 
  });
          }
        
       }else{
-        document.getElementById('titley').innerHTML = "<img src='img/ajax-loader.gif'/> &nbsp; جاري جلب البيانات ........";
-
+         $(document).ready(function(){
+        
+          $(".drop_value2").html("<span style='color:red;'>  <img src='img/ajax-loader.gif'/> </span>");
+         $("#down_from_top2").fadeOut();
+        
+       });
       }
     };
  
@@ -370,12 +452,21 @@ if(pro_name === "" || pro_price === ""){
       
           document.getElementById('titley').innerHTML ="عرض البيانات";
            
- 
+          $(document).ready(function(){
+        
+            $(".drop_value2").html("");
+           $("#down_from_top2").fadeIn();
+          
+         });
          }
        
       }else{
-        document.getElementById('titley').innerHTML = "<img src='img/ajax-loader.gif'/> &nbsp; جاري جلب البيانات ........";
-
+        $(document).ready(function(){
+        
+          $(".drop_value2").html("<span style='color:red;'>  <img src='img/ajax-loader.gif'/> </span>");
+         $("#down_from_top2").fadeOut();
+        
+       });
       }
     };
     if(confirm("هل تريد حذف "+title)) {
@@ -385,3 +476,296 @@ if(pro_name === "" || pro_price === ""){
   }
   
   }
+  // add salaries
+  function add_sal() {
+
+
+
+    var eid=document.getElementById("e_info").value;   
+       
+    var smonth=document.getElementById("smonth").value;  
+    var sdate=document.getElementById("sdate").value;  
+    
+   
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+         
+       if(this.responseText === "done"){
+        $(document).ready(function(){
+         
+  
+            $(".drop_value").html("<span style='color:blue;'>  تم الإضافة بنجاح </span>");
+           $("#down_from_top").slideDown().delay(3000).fadeOut();
+           
+         
+        
+        
+          $(".drop_value2").html("");
+         $("#down_from_top2").fadeIn();
+        
+       });
+       }else if(this.responseText === "found"){
+        $(document).ready(function(){
+         
+  
+          $(".drop_value").html("<span style='color:red;'>  تم الإضافة مسبقآ </span>");
+         $("#down_from_top").slideDown().delay(3000).fadeOut();
+         
+       
+        });
+       }
+  }
+    else {
+      $(document).ready(function(){
+        
+        $(".drop_value2").html("<span style='color:red;'>  <img src='img/ajax-loader.gif'/> </span>");
+       $("#down_from_top2").fadeOut();
+      
+     });
+      
+    }
+  } 
+
+  if(  smonth === "" || sdate === ""){
+    $(document).ready(function(){
+         
+  
+      $(".drop_value").html("<span style='color:red;'>  رجاء ملئ جميع الحقول</span>");
+     $("#down_from_top").slideDown().delay(3000).fadeOut();
+     
+   
+    });
+  }else{
+ 
+    xhttp.open("POST","add_sal_done.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+   
+     xhttp.send("eid="+eid+"&smonth="+smonth+"&sdate="+sdate );
+
+  }
+  }
+  
+    //                    edit products
+    function edit_product(url) {
+   
+     
+    
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          $(document).ready(function(){
+        
+            $(".drop_value2").html(" ");
+           $("#down_from_top2").fadeIn();
+          
+         });
+          document.getElementById('edit_content').innerHTML =  this.responseText;
+          document.getElementById('titley').innerHTML ="عرض البيانات";
+        }else{
+          $(document).ready(function(){
+        
+            $(".drop_value2").html("<span style='color:red;'>  <img src='img/ajax-loader.gif'/> </span>");
+           $("#down_from_top2").fadeOut();
+          
+         });
+        }
+      };
+   
+      xhttp.open("POST","edit_product.php",true);
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+       xhttp.send("id="+url);
+    } 
+  
+    function edit_product_done(url) {
+     
+      var sname=document.getElementById("sname").value; 
+      var sprice=document.getElementById("sprice").value; 
+      var stype=document.getElementById("stype").value; 
+      var sdate=document.getElementById("sdate").value; 
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+    
+           if(this.responseText === "done"){
+            give_pages("show_all_product.php"," عرض المنتجات    ");
+            document.getElementById('edit_content').innerHTML =   "";
+            document.getElementById('titley').innerHTML ="عرض البيانات";
+
+                
+    $(document).ready(function(){
+      
+        
+        $(".drop_value2").html(" ");
+       $("#down_from_top2").fadeIn();
+      
+   
+    
+      $(".drop_value").html("<span style='color:green;'>        تم تعديل بيانات بنجاح     </span>");
+     $("#down_from_top").slideDown().delay(3000).fadeOut();
+     
+   
+  
+   });
+           }
+         
+        }else{
+          $(document).ready(function(){
+        
+            $(".drop_value2").html("<span style='color:red;'>  <img src='img/ajax-loader.gif'/> </span>");
+           $("#down_from_top2").fadeOut();
+          
+         });
+        }
+      };
+   // alert(sname+sprice+stype+sdate);
+      xhttp.open("POST","edit_product_done.php",true);
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhttp.send("sname="+sname+"&sprice="+sprice+"&stype="+stype+"&sdate="+sdate+"&sno="+url);
+    
+    }
+    // edit salaries
+
+    function edit_sal(url) {
+   
+      var name = document.getElementById("name_"+url).innerHTML;
+     
+    
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          
+          $(document).ready(function(){
+        
+            $(".drop_value2").html(" ");
+           $("#down_from_top2").fadeIn();
+          
+         });
+          document.getElementById('edit_content').innerHTML =  this.responseText;
+          document.getElementById('titley').innerHTML ="عرض البيانات";
+        }else{
+          $(document).ready(function(){
+        
+            $(".drop_value2").html("<span style='color:red;'>  <img src='img/ajax-loader.gif'/> </span>");
+           $("#down_from_top2").fadeOut();
+          
+         });
+        }
+      };
+   
+      xhttp.open("POST","edit_sal.php",true);
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+       xhttp.send("id="+url+"&name="+name);
+    } 
+  //edit salaries done
+  function edit_sal_done(url) {
+   
+    var sdate=document.getElementById("sdate").value; 
+    var smonth=document.getElementById("smonth").value; 
+     
+    var esal=document.getElementById("esal").value; 
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        
+         if(this.responseText === "done"){
+           
+          give_pages("show_all_sal.php"," عرض المرتبات ");
+          document.getElementById('edit_content').innerHTML =   "";
+          
+  $(document).ready(function(){
+  
+    $(".drop_value").html("<span style='color:green;'>        تم تعديل بيانات بنجاح     </span>");
+   $("#down_from_top").slideDown().delay(3000).fadeOut();
+   
+   $(".drop_value2").html("");
+   $("#down_from_top2").fadeIn();
+
+ });
+         }
+       
+      }else{
+         $(document).ready(function(){
+        
+          $(".drop_value2").html("<span style='color:red;'>  <img src='img/ajax-loader.gif'/> </span>");
+         $("#down_from_top2").fadeOut();
+        
+       });
+      }
+    };
+ 
+    xhttp.open("POST","edit_sal_done.php",true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("sdate="+sdate+"&esal="+esal+"&smonth="+smonth+"&post_id="+url);
+  
+  }
+
+  //edit export ---------------------------------------------------
+  function edit_export(url) {
+   
+     
+    
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById('edit_content').innerHTML =  this.responseText;
+        document.getElementById('titley').innerHTML ="تعديل بيانات الصادر ";
+      }else{
+        document.getElementById('titley').innerHTML = "<img src='img/ajax-loader.gif'/> &nbsp; جاري جلب البيانات ........";
+
+      }
+    };
+ 
+    xhttp.open("POST","edit_export.php",true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+     xhttp.send("id="+url);
+  } 
+
+  function edit_export_done(url) {
+     //  rname,cno,dname,pname,pqty,ptype,bcost,dcost,lcost,manifist,tcost,ldate,arrive,comm
+    var rname=document.getElementById("rname").value; 
+    var cno=document.getElementById("cno").value; 
+    var dname=document.getElementById("dname").value; 
+    var pname=document.getElementById("pname").value; 
+    var pqty=document.getElementById("pqty").value; 
+    var bcost=document.getElementById("bcost").value; 
+    var dcost=document.getElementById("dcost").value; 
+    var lcost=document.getElementById("lcost").value; 
+    var manifist=document.getElementById("manifist").value; 
+    var ldate=document.getElementById("ldate").value; 
+    var comm=document.getElementById("comm").value; 
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+
+         if(this.responseText === "done"){
+          give_pages("show_all_export.php"," عرض الصادرات");
+          document.getElementById('edit_content').innerHTML =   "";
+          document.getElementById('titley').innerHTML ="عرض البيانات";
+              
+  $(document).ready(function(){
+  
+    $(".drop_value").html("<span style='color:green;'>        تم تعديل بيانات بنجاح     </span>");
+   $("#down_from_top").slideDown().delay(3000).fadeOut();
+   
+ 
+
+ });
+         }
+       
+      }else{
+        document.getElementById('titley').innerHTML = "<img src='img/ajax-loader.gif'/> &nbsp; جاري جلب البيانات ........";
+
+      }
+    };   
+ // alert(sname+sprice+stype+sdate);
+ // //  rname,cno,dname,pname,pqty,ptype,bcost,dcost,lcost,manifist,tcost,ldate,arrive,comm
+    xhttp.open("POST","edit_export_done.php",true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("rname="+rname+"&cno="+cno+"&dname="+dname+"&pname="+pname+"&pqty="+pqty+"&bcost="+bcost+"&dcost="+dcost+"&lcost="+lcost+"&manifist="+manifist+"&ldate="+ldate+"&comm="+comm+"&eid="+url);
+  
+  }
+
+ 
+  
+  

@@ -1,7 +1,7 @@
 	
  
                      
-<form  style='text-align:right;'>
+<form  style='text-align:right; font-size:12px;'>
              
                  
                 المنتج:<input type="text" id='pro_name' class="form-control " placeholder="">

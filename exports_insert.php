@@ -3,7 +3,7 @@
 include("connect.php");
 $items=mysql_query("select sno,sname,stype from store order by sno");
 ?> 
-<form  style='text-align:right;'>
+<form  style='text-align:right; font-size:13px;'>
              
             <table width='100%' class='table'>
             <tr>
