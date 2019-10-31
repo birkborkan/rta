@@ -5,14 +5,12 @@ $(document).ready(function(){
   $("#down_from_top").slideUp();
   $(".drop_value").html(" ");
 
- 
- 
+  
  
  });
  
  
- 
- 
+  
  /*
  $(".btn1").click(function(){
   ;
@@ -69,15 +67,15 @@ function login() {
 
 // this is give for giving the pages to the div
   function give_pages(url,titlee) {
-   if(url === "show_all_export.php"){
+   if(url === "show_all_export.php"  || url ===  "show_all_waiting.php" || url ===  "show_all_import.php"){
 
     $(document).ready(function(){
         
       $(".col-lg-3").hide();
       $("#col_large").addClass("col-lg-12");
       $("#col_large").addClass("col-xl-12");
+      $("#accordionSidebar").addClass("toggled");
    
-      
     
    });
    }
@@ -85,6 +83,39 @@ function login() {
     $(".col-lg-3").show();
     $("#col_large").removeClass("col-lg-12");
     $("#col_large").removeClass("col-xl-12");
+    $("#accordionSidebar").removeClass("toggled");
+    
+   }
+   if(url === "show_all_product.php"){
+    $("#col_large").addClass("bg_color_lightblue");
+    $(".card-body").addClass("bg_color_lightblue");
+   
+    
+   }else{
+    $("#col_large").removeClass("bg_color_lightblue");
+    $(".card-body").removeClass("bg_color_lightblue");
+   
+    
+   }
+   if(url === "show_all_employee.php"){
+    $("#col_large").addClass("bg_color_likebrown");
+    $(".card-body").addClass("bg_color_likebrown");
+   
+   }else{
+    $("#col_large").removeClass("bg_color_likebrown");
+    $(".card-body").removeClass("bg_color_likebrown");
+   
+    
+   } 
+   if(url === "show_all_sal.php"){
+    $("#col_large").addClass("bg_color_darkblue");
+    $(".card-body").addClass("bg_color_darkblue");
+   
+   }else{
+    $("#col_large").removeClass("bg_color_darkblue");
+    $(".card-body").removeClass("bg_color_darkblue");
+   
+    
    }
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -201,6 +232,7 @@ if(pro_name === "" || pro_price === ""){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
+        
        if(this.responseText === "done"){
 
         document.getElementById('titley').innerHTML ="إضافة صادر  جديد";
@@ -238,7 +270,7 @@ if(pro_name === "" || pro_price === ""){
     }
   }
   
-  if(rname === '' || cno === '' ||pname === '' || dname === ''){
+  if(rname === '' || cno === '' ||pname === '' || dname === '' || ldate === ''){
 
   document.getElementById('titley').innerHTML ="إضافة صادر  جديد";
     
@@ -586,7 +618,7 @@ if(pro_name === "" || pro_price === ""){
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-    
+          alert(this.responseText);
            if(this.responseText === "done"){
             give_pages("show_all_product.php"," عرض المنتجات    ");
             document.getElementById('edit_content').innerHTML =   "";
@@ -594,19 +626,23 @@ if(pro_name === "" || pro_price === ""){
 
                 
     $(document).ready(function(){
-      
-        
-        $(".drop_value2").html(" ");
+
+      $(".drop_value2").html(" ");
        $("#down_from_top2").fadeIn();
-      
-   
-    
       $(".drop_value").html("<span style='color:green;'>        تم تعديل بيانات بنجاح     </span>");
      $("#down_from_top").slideDown().delay(3000).fadeOut();
      
-   
-  
    });
+           }
+           else if(this.responseText === "found"){
+            $(document).ready(function(){
+
+              $(".drop_value2").html(" ");
+               $("#down_from_top2").fadeIn();
+              $(".drop_value").html("<span style='color:green;'> لا يمكن تعديل منتج به  بيانات </span>");
+             $("#down_from_top").slideDown().delay(3000).fadeOut();
+             
+           });
            }
          
         }else{
@@ -767,5 +803,122 @@ if(pro_name === "" || pro_price === ""){
   }
 
  
+  function birk(){
+    $(document).ready(function(){
+    
+      alert($("#dataTable").scrollTop());
+    
+    });
+  }
+  
+    //add new  waiting ---------------------------------------------------
+    function add_waiting_done(url) {
+   
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        
+          if(this.responseText == "done"){
+            give_pages("show_all_waiting.php"," عرض وارد المنتظر ");
+            document.getElementById('edit_content').innerHTML = "";// this.responseText;
+            document.getElementById('titley').innerHTML ="تم الاستلام بنجاح   ";
+  
+            $(document).ready(function(){
+    
+              $(".drop_value").html("<span style='color:green;'>  تم استلام الوارد بنجاح   </span>");
+             $("#down_from_top").slideDown().delay(3000).fadeOut();
+             
+             $(".drop_value2").html("");
+             $("#down_from_top2").fadeIn();
+          
+           });
+          }
+        }else{
+         // document.getElementById('titley').innerHTML = "<img src='img/ajax-loader.gif'/> &nbsp; جاري جلب البيانات ........";
+         $(document).ready(function(){
+          
+          $(".drop_value2").html("<span style='color:red;'>  <img src='img/ajax-loader.gif'/> </span>");
+         $("#down_from_top2").fadeOut();
+        
+       });
+        }
+      };
+   
+  if(confirm("هل تريد استلام الوارد؟","الرسالة التاكيد")){
+    xhttp.open("POST","add_new_stlam_done.php",true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+     xhttp.send("eid="+url);
+  }
+    }
+
+  // add import to store   ---------------------------------------------------
+   function add_store(url,sid) {
+   
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+ 
+        if(this.responseText == "done"){
+          give_pages("show_all_import.php"," عرض وارد المخزن ");
+          document.getElementById('edit_content').innerHTML = "";// this.responseText;
+          document.getElementById('titley').innerHTML ="تم تخزين بنجاح   ";
+
+          $(document).ready(function(){
+  
+            $(".drop_value").html("<span style='color:green;'>  تم تخزين بنجاح   </span>");
+           $("#down_from_top").slideDown().delay(3000).fadeOut();
+           
+           $(".drop_value2").html("");
+           $("#down_from_top2").fadeIn();
+        
+         });
+                }  else {
+
+                  document.getElementById('titley').innerHTML ="فشل العملية";
+
+                  $(document).ready(function(){
+          
+                    $(".drop_value").html("<span style='color:green;'> فشل العملية الرجاء محاولة مرة اخرى!!   </span>");
+                  $("#down_from_top").slideDown().delay(3000).fadeOut();
+                  
+                  $(".drop_value2").html("");
+                  $("#down_from_top2").fadeIn();
+                
+                });
+                      }
+      }else{
+       $(document).ready(function(){
+        
+        $(".drop_value2").html("<span style='color:red;'>  <img src='img/ajax-loader.gif'/> </span>");
+       $("#down_from_top2").fadeOut();
+      
+     });
+      }
+    };
+ 
+if(confirm("هل تريد اضافةالوارد للمخزن؟","الرسالة التاكيد")){
+  xhttp.open("POST","update_store_done.php",true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+   xhttp.send("eid="+url+"&sid="+sid);
+}
+  }
+
+  // check stor ---------------------------------------------------
+  function check_store() {
+ 
+ 
+
+   document.getElementById('titley').innerHTML ="فشل العملية";
+
+                  $(document).ready(function(){
+          
+                    $(".drop_value").html("<span style='color:red;'> لقد قمت باضافة الوارد مسبقا    </span>");
+                  $("#down_from_top").slideDown().delay(3000).fadeOut();
+                  
+                  $(".drop_value2").html("");
+                  $("#down_from_top2").fadeIn();
+                
+                });
+  }
   
   

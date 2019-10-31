@@ -21,15 +21,16 @@ if($r_name)
     if(mysql_num_rows($select) > 0){
     echo "found";
     }else{
-        $v_item=mysql_query("select stype from store where sname like '$p_name'");
+        $v_item=mysql_query("select * from store where sname like '$p_name'");
         $res=mysql_fetch_array($v_item);
     $stype=$res['stype'];
+    $sid=$res['sno'];
     $t_cost=$b_cost+$d_cost+$l_cost+$mani;
   
         $insert=mysql_query("insert into store_exp
-       (rname,cno,dname,pname,pqty,ptype,bcost,dcost,lcost,manifist,tcost,ldate,arrive,comm) 
+       (sid,rname,cno,dname,pname,pqty,ptype,bcost,dcost,lcost,manifist,tcost,ldate,arrive,comm) 
         values 
-    ('$r_name','$c_no','$d_name','$p_name','$p_qty','$stype','$b_cost','$d_cost','$l_cost','$mani','$t_cost','$l_date',0,'$comm')") or die(mysql_error());
+    ('$sid','$r_name','$c_no','$d_name','$p_name','$p_qty','$stype','$b_cost','$d_cost','$l_cost','$mani','$t_cost','$l_date',0,'$comm')") or die(mysql_error());
              
    if($insert){
        echo "done";

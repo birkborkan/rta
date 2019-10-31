@@ -12,15 +12,16 @@ $q=mysql_query(" select * from store order by sno desc");
 
     ?>
     
-  <table class="table table-bordered" id="dataTable" width="100%" style='font-size:11px;text-align:right;' cellspacing="0">
+    <table class="table table-bordered" id="dataTable" width="100%" style='font-size:11x;text-align:right;' cellspacing="0">
                   <thead>
-                  <tr>
+                  <tr  >
                        
                        <th>#</th>
                       
-            <th>المنتج</th>
+            <th class=''>المنتج</th>
             <th>التصنيف </th>
                <th>السعر</th>
+                    <th> كمية </th>
                     <th>تاريخ الاضافة</th>
                           <th >الخيارات</th>
                      </tr>
@@ -36,10 +37,11 @@ $q=mysql_query(" select * from store order by sno desc");
                         <tr>
                         <td>".$srno."</td>
                         
-                        <td>".$row['sname']."</td>
-                        <td>".$row['stype']."</td>
-                        <td>".$row['sprice']."</td>
-                        <td>".$row['sdate']."</td>
+                        <td   >".$row['sname']."</td>
+                        <td  >".$row['stype']."</td>
+                        <td  >".$row['sprice']."</td>
+                        <td  >".$row['sqty']."</td>
+                        <td >".$row['sdate']."</td>
                         <td >
                         <span  class='btn btn-success' style='width:48%;' onmousedown='edit_product(".$row['sno'].")'>تعديل</span>  
                        "; ?>	

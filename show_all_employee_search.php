@@ -10,9 +10,10 @@ or ejob like '%$name%' or esal like '%$name%' or ephone like '%$name%'") or die(
 
     ?>
     
+  
     <table class="table table-bordered" id="dataTable" width="100%" style='font-size:11px;text-align:right;' cellspacing="0">
                   <thead>
-                  <tr>
+                  <tr style='background:#4f004f;color:white;'>
                        
                        <th>#</th>
             <th>الاسم</th>
@@ -26,28 +27,29 @@ or ejob like '%$name%' or esal like '%$name%' or ephone like '%$name%'") or die(
                    <tbody>
                     <?php
                    
-                        $srno=mysql_num_rows($q);
+                        $srno= 0;
                         while($row=mysql_fetch_array($q))
                         {//dname,dphone,pname,ptype,pqty,psel,pcost,pbuy,ppro,plos,lfees,ldate1,ldate2
+                            $srno++;
                             echo "
                         <tr>
-                        <td>".$srno."</td>
-                        <td>".$row['ename']."</td>
-                        <td>".$row['ephone']."</td>
-                        <td>".$row['ejob']."</td>
-                        <td>".$row['esal']."</td>
-                        <td>".$row['ehdate']."</td>
-                        <td >
-                        <a href='#'  onclick='return false;' 
-                        onmousedown='edit_employee(".$row['eid'].")'><input style='background:#70e670;color:#3d3df2;' class='btn btn-primary btn-user btn-block'   value='تعديل'></a>   
+                        <td style='background:forestgreen;color:white;'>".$srno."</td>
+                        <td style='background:#4f004f;color:white;'>".$row['ename']."</td>
+                        <td style='background:#f1f38b;color:red;'>".$row['ephone']."</td>
+                        <td style='background:#aa5555;color:white;'>".$row['ejob']."</td>
+                        <td style='background:#ffff62;color:black;'>".$row['esal']."</td>
+                        <td style='background: #54a9a9;color:white;'>".$row['ehdate']."</td>
+                        <td style='background:#ffff91;color:white;' >
+                        <span onmousedown='edit_employee(".$row['eid'].")'
+                        class='btn btn-success' style='width:48%;'>تعديل </span>   
                         "; ?>  
-                        <input style='background:#f57373;color:#3d3df2;'  
-                         class='btn btn-primary btn-user btn-block'      
-                            value='حذف' onmousedown='delete_(<?php echo $row["eid"] ; ?>,"delete.php","show_all_employee.php","الموظف","عرض الموظفين","emp","eid")'/>	
+                        <span   class='btn btn-danger' style='width:48%;'
+                             
+                            onmousedown='delete_(<?php echo $row["eid"] ; ?>,"delete.php","show_all_employee.php","الموظف","عرض الموظفين","emp","eid")'>حذف</span>	
                             
                         </td> 
                         </tr>  
-                        <?php  $srno-=1;
+                        <?php   
                          }  ?>
                </tbody>
                 </table>
@@ -63,10 +65,10 @@ or ejob like '%$name%' or esal like '%$name%' or ephone like '%$name%'") or die(
                     
 
     ?>
-    
-    <table class="table table-bordered" id="dataTable" width="100%" style='font-size:11px;text-align:right;' cellspacing="0">
+  
+  <table class="table table-bordered" id="dataTable" width="100%" style='font-size:11px;text-align:right;' cellspacing="0">
                   <thead>
-                  <tr>
+                  <tr style='background:#4f004f;color:white;'>
                        
                        <th>#</th>
             <th>الاسم</th>
@@ -80,28 +82,29 @@ or ejob like '%$name%' or esal like '%$name%' or ephone like '%$name%'") or die(
                    <tbody>
                     <?php
                    
-                        $srno=mysql_num_rows($q);
+                        $srno= 0;
                         while($row=mysql_fetch_array($q))
                         {//dname,dphone,pname,ptype,pqty,psel,pcost,pbuy,ppro,plos,lfees,ldate1,ldate2
+                            $srno++;
                             echo "
                         <tr>
-                        <td>".$srno."</td>
-                        <td>".$row['ename']."</td>
-                        <td>".$row['ephone']."</td>
-                        <td>".$row['ejob']."</td>
-                        <td>".$row['esal']."</td>
-                        <td>".$row['ehdate']."</td>
-                        <td >
-                        <a href='#'  onclick='return false;' 
-                        onmousedown='edit_employee(".$row['eid'].")'><input style='background:#70e670;color:#3d3df2;' class='btn btn-primary btn-user btn-block'   value='تعديل'></a>   
+                        <td style='background:forestgreen;color:white;'>".$srno."</td>
+                        <td style='background:#4f004f;color:white;'>".$row['ename']."</td>
+                        <td style='background:#f1f38b;color:red;'>".$row['ephone']."</td>
+                        <td style='background:#aa5555;color:white;'>".$row['ejob']."</td>
+                        <td style='background:#ffff62;color:black;'>".$row['esal']."</td>
+                        <td style='background: #54a9a9;color:white;'>".$row['ehdate']."</td>
+                        <td style='background:#ffff91;color:white;' >
+                        <span onmousedown='edit_employee(".$row['eid'].")'
+                        class='btn btn-success' style='width:48%;'>تعديل </span>   
                         "; ?>  
-                        <input style='background:#f57373;color:#3d3df2;'  
-                         class='btn btn-primary btn-user btn-block'      
-                            value='حذف' onmousedown='delete_(<?php echo $row["eid"] ; ?>,"delete.php","show_all_employee.php","الموظف","عرض الموظفين","emp","eid")'/>	
+                        <span   class='btn btn-danger' style='width:48%;'
+                             
+                            onmousedown='delete_(<?php echo $row["eid"] ; ?>,"delete.php","show_all_employee.php","الموظف","عرض الموظفين","emp","eid")'>حذف</span>	
                             
                         </td> 
                         </tr>  
-                        <?php  $srno-=1;
+                        <?php   
                          }  ?>
                </tbody>
                 </table>

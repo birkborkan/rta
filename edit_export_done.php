@@ -15,7 +15,7 @@
  $e_id=$_POST['eid'];
  
 if($r_name){
-    $v_item=mysql_query("select stype from store where sname like '$p_name'");
+    $v_item=mysql_query("select * from store where sname like '$p_name'");
          $sres=mysql_fetch_array($v_item);
        $s_type=$sres['stype'];
        $t_cost=$b_cost+$d_cost+$l_cost+$mani;

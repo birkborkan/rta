@@ -123,7 +123,7 @@ if(!isset($_SESSION['global_admin'])){
     border-radius: 6px;
     z-index:1001;
 
- 
+  
   
   }
   .dropdown-toggle::after {
@@ -198,6 +198,18 @@ canvas{
 form{
   font-size:13px;
 }
+.bg_color_lightgreen{
+  background:lightgreen;
+}
+.bg_color_lightblue{
+  background:lightblue;
+}
+.bg_color_likebrown{
+  background:#aa5555;
+}
+.bg_color_darkblue{
+  background:#003264;
+}
 </style>
 
 </head>
@@ -264,9 +276,8 @@ form{
     <div class="btn btn-default dropdown-toggle bro" type="button" id="menu1" data-toggle="dropdown">الواردات 
     <span class="caret"></span></div>
     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style='text-align:right;'>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">المنتظرة</a></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">المستلمة</a></li>
-     
+    <li class='li_hover' role="presentation" onclick='return false;' onmousedown="give_pages('show_all_waiting.php','  عرض الوارد المنتظر ');"><a role="menuitem" tabindex="-1" href="#">   المتظرة</a></li>
+    <li class='li_hover' role="presentation" onclick='return false;' onmousedown="give_pages('show_all_import.php','  عرض الوارد المستلم');"><a role="menuitem" tabindex="-1" href="#">   المستلمة</a></li>
     </ul>
   </div>      
     
@@ -490,7 +501,7 @@ Rotana Flour Mills
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800" style='font-family:tahoma;' id='seventyfive'> مطاحن روتانا للغلال وكيل نيالا    </h1>
+            <h1 class="h3 mb-0 text-gray-800" style='font-family:0;' id='seventyfive'> مطاحن روتانا للغلال وكيل نيالا    </h1>
             <a href="#" 
            class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
             <i class="fas fa-home fa-sm text-white-50"></i>الرئيسية</a>

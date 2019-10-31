@@ -1,13 +1,13 @@
 <?php include "connect.php";?>
 <div class="table-responsive">
-<input type='text' class="form-control fa fa-search"placeholder='search' id='search_text' onkeydown = "search('show_all_export_search.php','عرض الصادر');" onkeyup = "search('show_all_export_search.php','عرض الصادر');"/>
+<input type='text' class="form-control fa fa-search"placeholder='search' id='search_text' onkeydown = "search('show_all_watiting_search.php','عرض الصادر');" onkeyup = "search('show_all_watiting_search.php','عرض الصادر');"/>
 <div  id='edit_content'></div>
 <div  id='search_id'></div>
 <div id='search_content'> 
   
 <?php
 
-$q=mysql_query(" select * from store_exp order by eid desc");
+$q=mysql_query(" select * from store_exp where arrive=0 order by eid desc");
                     if (mysql_num_rows($q)>0) {
                     
 
@@ -28,8 +28,9 @@ $q=mysql_query(" select * from store_exp order by eid desc");
                              <th>منفستو </th>
                               <th>التكلفة </th>
                                 <th>ت. الشراء </th>
-                                 <th>الوصول </th>
-                                 <th>ملاحظات </th>
+                         
+                               
+                                
                                  <th style="text-align:center">الخيارات</th>
                      </tr>
                   </thead>
@@ -41,27 +42,20 @@ $q=mysql_query(" select * from store_exp order by eid desc");
                     $b_cost=0;
                     $l_cost=0;
                     $mani_=0;
+                   
                     $cost=0;
                     $t_cost=0;
                     $c_id=0;
                         while($row=mysql_fetch_array($q))
                         {//dname,dphone,pname,ptype,pqty,psel,pcost,pbuy,ppro,plos,lfees,ldate1,ldate2
-                          $serno+=1;
-                          if($row['arrive']==1)
-                          {
-                           $arrive="تمت";   
-                          }
-                           else
-                           {
-                            $arrive="لم تتم";    
-                           }
-                              $c_id+=1;
                             $p_qty+=$row['pqty']; 
                             $b_cost+=$row['bcost']; 
                             $d_cost+=$row['dcost']; 
                             $l_cost+=$row['lcost']; 
                             $mani_+=$row['manifist']; 
                             $t_cost+=$row['tcost'];
+                          $serno+=1;
+                          
                             echo "
                         <tr>
                         <td>".$serno."</td>
@@ -77,14 +71,13 @@ $q=mysql_query(" select * from store_exp order by eid desc");
                         <td>".number_format($row['manifist'])."</td>
                         <td>".number_format($row['tcost'])."</td>
                         <td>".$row['ldate']."</td>
-                        <td>".$arrive."</td>
-                        <td>".$row['comm']."</td>
+                     
+                    
+                        
                         <td >
-                        <span  class='btn btn-success xx' style='width:48%;'  onmousedown='edit_export(".$row['eid'].")'>تعديل</span>  
+                        <span  class='btn btn-success xx' style='width:100%;'  onmousedown='add_waiting_done(".$row['eid'].")'>استلام</span>  
                         "; ?> 
-                        <span class='btn btn-danger' style='width:48%;'  onmousedown='delete_(<?php echo $row["eid"] ; ?>,"delete.php","show_all_export.php","صادر","عرض الصادر","store_exp","eid")'>	
-                            حذف
-                         </span>
+                       
                         </td> 
                         </tr>
                           
@@ -93,22 +86,23 @@ $q=mysql_query(" select * from store_exp order by eid desc");
                    ?> 
                   </tbody>
                   <?php 
-                   echo "
-                   <tr>
-                   <td style='border-style:none;'></td>
-                   <td style='border-style:none;'>الاجماليات</td>
-                   <td style='border-style:none;'></td>
-                   <td style='border-style:none;'></td>
-                   <td style='border-style:none;'></td>
-                   
-                   <td>".number_format($p_qty)."</td>
-                   <td style='border-style:none;'></td>
-                   <td>".number_format($b_cost)."</td>
-                   <td>".number_format($d_cost)."</td>
-                   <td>".number_format($l_cost)."</td>
-                   <td>".number_format($mani_)."</td>
-                   <td>".number_format($t_cost)."</td>
-                   "; 
+                  echo "
+                  <tr>
+                  <td style='border-style:none;'></td>
+                  <td style='border-style:none;'>الاجماليات</td>
+                  <td style='border-style:none;'></td>
+                  <td style='border-style:none;'></td>
+                  <td style='border-style:none;'></td>
+                  
+                  <td>".number_format($p_qty)."</td>
+                  <td style='border-style:none;'></td>
+                  <td>".number_format($b_cost)."</td>
+                  <td>".number_format($d_cost)."</td>
+                  <td>".number_format($l_cost)."</td>
+                  <td>".number_format($mani_)."</td>
+                 
+                  <td>".number_format($t_cost)."</td>
+                  "; 
                   ?>
                 </table>
                 </div>
