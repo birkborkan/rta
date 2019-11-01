@@ -10,7 +10,7 @@
 $q=mysql_query(" select * from store_imp order by eid desc");
                     if (mysql_num_rows($q)>0) {
                     
-//eid,lno,dname,pname,pqty,ptype,pcost,pbuy,psel,ppro,plos,ldate1,ldate2,stored
+
 //eid,lno,dname,pname,ptype,pqty,pbuy,pcost,borsa,psel,ppro,plos,ldate1,ldate2,stored
     ?>   
 <table class="table table-bordered" id="dataTable" width="100%" style='font-size:11px;text-align:right;' cellspacing="0">
@@ -75,7 +75,7 @@ $q=mysql_query(" select * from store_imp order by eid desc");
                             echo "
                         <tr>
                         <td>".$serno."</td>
-                        <td>".$row['lno']."</td>
+                        <td>".$row['cno']."</td>
                         <td>".$row['dname']."</td>
                         <td>".$row['pname']."</td>
                         <td>".$row['ptype']."</td>

@@ -65,9 +65,9 @@ function login() {
      xhttp.send("username="+username2+"&password="+password2);
   }
 
-// this is give for giving the pages to the div
+// this is give for giving the pages to the div!!! give_pages give_pages give_pages give_pages give_pages give_pages give_pages
   function give_pages(url,titlee) {
-   if(url === "show_all_export.php"  || url ===  "show_all_waiting.php" || url ===  "show_all_import.php"){
+   if(url === "show_all_export.php"  || url ===  "show_all_waiting.php" || url ===  "show_all_import.php" || url ===  "show_all_history.php"){
 
     $(document).ready(function(){
         
@@ -857,12 +857,12 @@ if(pro_name === "" || pro_price === ""){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
- 
+      
         if(this.responseText == "done"){
           give_pages("show_all_import.php"," عرض وارد المخزن ");
           document.getElementById('edit_content').innerHTML = "";// this.responseText;
           document.getElementById('titley').innerHTML ="تم تخزين بنجاح   ";
-
+            
           $(document).ready(function(){
   
             $(".drop_value").html("<span style='color:green;'>  تم تخزين بنجاح   </span>");

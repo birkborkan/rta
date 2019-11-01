@@ -3,7 +3,7 @@
  $name = $_POST['search_text'];
     if($name){  
       
-        $q = mysql_query("select * from `store_imp` where `dname` like '%$name%' or pname like '%$name%'  ")or die(mysql_error());
+        $q = mysql_query("select * from `store_imp` where `dname` like '%$name%' or pname like '%$name%'  or cno like '%$name%' or ptype like '%$name%'  ")or die(mysql_error());
                     if(mysql_num_rows($q) > 0) {
   //or 'lno' like '%$name%' or ldate1 like '%$name%' or ldate2 like '%$name%'
   ?>
@@ -69,7 +69,7 @@
                             echo "
                         <tr>
                         <td>".$serno."</td>
-                        <td>".$row['lno']."</td>
+                        <td>".$row['cno']."</td>
                         <td>".$row['dname']."</td>
                         <td>".$row['pname']."</td>
                         <td>".$row['ptype']."</td>
@@ -192,7 +192,7 @@
                             echo "
                         <tr>
                         <td>".$serno."</td>
-                        <td>".$row['lno']."</td>
+                        <td>".$row['cno']."</td>
                         <td>".$row['dname']."</td>
                         <td>".$row['pname']."</td>
                         <td>".$row['ptype']."</td>

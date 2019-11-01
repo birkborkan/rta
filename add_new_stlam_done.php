@@ -24,7 +24,7 @@ include "connect.php";
     $p_los=max(($p_cost+$p_buy-$p_sel),0);
     
     $insert=mysql_query("insert into store_imp
-    (eid,sid,lno,dname,pname,pqty,ptype,pcost,pbuy,psel,ppro,plos,ldate1,ldate2,stor) 
+    (eid,sid,cno,dname,pname,pqty,ptype,pcost,pbuy,psel,ppro,plos,ldate1,ldate2,stor) 
      values
 ($e_id,$s_id,'$c_no','$d_name','$p_name','$p_qty','$s_type','$p_cost','$p_buy','$p_sel','$p_pro','$p_los','$l_date','$o_date','0')") or die(mysql_error()); 
      $exup= mysql_query("update store_exp  
