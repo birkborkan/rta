@@ -13,6 +13,7 @@ $q=mysql_query(" select * from store_imp order by eid desc");
 
 //eid,lno,dname,pname,ptype,pqty,pbuy,pcost,borsa,psel,ppro,plos,ldate1,ldate2,stored
     ?>   
+  
 <table class="table table-bordered" id="dataTable" width="100%" style='font-size:11px;text-align:right;' cellspacing="0">
                   <thead>
                   <tr>
