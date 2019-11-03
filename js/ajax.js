@@ -65,9 +65,9 @@ function login() {
      xhttp.send("username="+username2+"&password="+password2);
   }
 
-// this is give for giving the pages to the div
+// this is give for giving the pages to the div!!! give_pages give_pages give_pages give_pages give_pages give_pages give_pages
   function give_pages(url,titlee) {
-   if(url === "show_all_export.php"  || url ===  "show_all_waiting.php" || url ===  "show_all_import.php"){
+   if(url === "show_all_export.php"  || url ===  "show_all_waiting.php" || url ===  "show_all_import.php" || url ===  "show_all_history.php"){
 
     $(document).ready(function(){
         
@@ -801,6 +801,7 @@ if(pro_name === "" || pro_price === ""){
     xhttp.send("rname="+rname+"&cno="+cno+"&dname="+dname+"&pname="+pname+"&pqty="+pqty+"&bcost="+bcost+"&dcost="+dcost+"&lcost="+lcost+"&manifist="+manifist+"&ldate="+ldate+"&comm="+comm+"&eid="+url);
   
   }
+  
 
  
   function birk(){
@@ -857,12 +858,12 @@ if(pro_name === "" || pro_price === ""){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
- 
+      
         if(this.responseText == "done"){
           give_pages("show_all_import.php"," عرض وارد المخزن ");
           document.getElementById('edit_content').innerHTML = "";// this.responseText;
           document.getElementById('titley').innerHTML ="تم تخزين بنجاح   ";
-
+            
           $(document).ready(function(){
   
             $(".drop_value").html("<span style='color:green;'>  تم تخزين بنجاح   </span>");
@@ -921,4 +922,79 @@ if(confirm("هل تريد اضافةالوارد للمخزن؟","الرسالة
                 });
   }
   
+   //edit import ---------------------------------------------------
+   function edit_import(url,stor_val) {
+   
+     
+    
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById('edit_content').innerHTML =  this.responseText;
+        document.getElementById('titley').innerHTML ="تعديل بيانات الصادر ";
+      }else{
+        document.getElementById('titley').innerHTML = "<img src='img/ajax-loader.gif'/> &nbsp; جاري جلب البيانات ........";
+
+      }
+    };
+ if(stor_val === 0){
+    xhttp.open("POST","edit_import.php",true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+     xhttp.send("id="+url);
+  }
+else{
+  $(document).ready(function(){
   
+    $(".drop_value").html("<span style='color:red;'>لا يمكن تعديل الكمية بعد التخزين</span>");
+   $("#down_from_top").slideDown().delay(3000).fadeOut();
+   
+ 
+
+ });
+} }
+
+  function edit_import_done(url) {
+     //  rname,cno,dname,pname,pqty,ptype,bcost,dcost,lcost,manifist,tcost,ldate,arrive,comm
+    var borsa=document.getElementById("borsa").value; 
+    var miss=document.getElementById("miss").value; 
+    var stor=document.getElementById("stor").value; 
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+     alert(this.responseText);
+         if(this.responseText === "done"){
+          give_pages("show_all_import.php"," عرض وارد المستلم");
+          document.getElementById('edit_content').innerHTML =   "";
+          document.getElementById('titley').innerHTML ="عرض البيانات";
+              
+  $(document).ready(function(){
+  
+    $(".drop_value").html("<span style='color:green;'>        تم تعديل بيانات بنجاح     </span>");
+   $("#down_from_top").slideDown().delay(3000).fadeOut();
+   
+ 
+
+ });
+         } else if(this.responseText === "no"){
+          $(document).ready(function(){
+  
+            $(".drop_value").html("<span style='color:red;'>لا يمكن تعديل الكمية بعد التخزين</span>");
+           $("#down_from_top").slideDown().delay(3000).fadeOut();
+           
+         
+        
+         });
+         }
+       
+      }else{
+        document.getElementById('titley').innerHTML = "<img src='img/ajax-loader.gif'/> &nbsp; جاري جلب البيانات ........";
+
+      }
+    };   
+ // alert(sname+sprice+stype+sdate);
+ // //  rname,cno,dname,pname,pqty,ptype,bcost,dcost,lcost,manifist,tcost,ldate,arrive,comm
+    xhttp.open("POST","edit_import_done.php",true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("borsa="+borsa+"&miss="+miss+"&stor="+stor+"&eid="+url);
+  
+  }

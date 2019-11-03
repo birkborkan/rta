@@ -268,7 +268,7 @@ form{
     </ul>
   </div>
           <div class="dropdown" style='float:right;'>
-    <div class="btn btn-default dropdown-toggle bro" type="button" id="menu1" data-toggle="dropdown"> حركة المخزن 
+    <div class="btn btn-default dropdown-toggle bro" type="button" id="menu1" data-toggle="dropdown" onclick='return false;' onmousedown="give_pages('show_all_history.php','حركة المخزن');"> حركة المخزن 
     <span class="caret"></span></div>
     
   </div>

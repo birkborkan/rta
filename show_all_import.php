@@ -10,7 +10,7 @@
 $q=mysql_query(" select * from store_imp order by eid desc");
                     if (mysql_num_rows($q)>0) {
                     
-//eid,lno,dname,pname,pqty,ptype,pcost,pbuy,psel,ppro,plos,ldate1,ldate2,stored
+
 //eid,lno,dname,pname,ptype,pqty,pbuy,pcost,borsa,psel,ppro,plos,ldate1,ldate2,stored
     ?>   
 <table class="table table-bordered" id="dataTable" width="100%" style='font-size:11px;text-align:right;' cellspacing="0">
@@ -23,6 +23,7 @@ $q=mysql_query(" select * from store_imp order by eid desc");
                   <th>الوحدة</th>
                     <th>التصنيف </th>
                       <th> الكمية</th>
+                       <th> فقدان</th>
                          <th>الشراء </th>
                          <th>التكلفة </th>
                          <th>بورصة </th>
@@ -55,12 +56,12 @@ $q=mysql_query(" select * from store_imp order by eid desc");
                           if($row['stor']==1)
                           {
                            $stor=    "<span  class='btn btn-success ' style='width:100%;' onmousedown='check_store()'>تمت</span> ";
-                            
+                            $stor_val = 1;
                           }
                            else
                            {
                             $stor="<span  class='btn btn-danger ' style='width:100%;'  onmousedown='add_store(".$row['eid'].",".$row['sid'].")'>تخزين</span> ";  
-                               
+                            $stor_val = 0; 
                            }
                               $c_id+=1;
                             $p_qty+=$row['pqty']; 
@@ -75,11 +76,12 @@ $q=mysql_query(" select * from store_imp order by eid desc");
                             echo "
                         <tr>
                         <td>".$serno."</td>
-                        <td>".$row['lno']."</td>
+                        <td>".$row['cno']."</td>
                         <td>".$row['dname']."</td>
                         <td>".$row['pname']."</td>
                         <td>".$row['ptype']."</td>
                         <td>".$row['pqty']."</td>
+                        <td>".number_format($row['miss'])."</td>
                         <td>".number_format($row['pbuy'])."</td>
                         <td>".number_format($row['pcost'])."</td>
                         <td>".number_format($row['borsa'])."</td>
@@ -88,15 +90,13 @@ $q=mysql_query(" select * from store_imp order by eid desc");
                         <td>".number_format($row['plos'])."</td>  
                         <td>".$row['ldate1']."</td>
                         <td>".$row['ldate2']."</td>
-                        <td>".$stor."</td>
+                        <td >".$stor."</td>
                      
                         <td >
-                        <span  class='btn btn-success xx' style='width:48%;'  onmousedown='edit_import(".$row['eid'].")'>تعديل</span>  
+                        <span  class='btn btn-success xx' style='width:100%;'  onmousedown='edit_import(".$row['eid'].",".$stor_val.")'>تعديل</span>  
                         
                         "; ?> 
-                        <span class='btn btn-danger' style='width:48%;'  onmousedown='delete_(<?php echo $row["eid"] ; ?>,"delete.php","show_all_import.php","صادر","عرض الصادر","store_exp","eid")'>	
-                            حذف
-                         </span>
+                        
                         </td> 
                         </tr>
                           
